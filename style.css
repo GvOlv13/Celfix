@@ -853,6 +853,7 @@ a{
     font-size: 48px;
     color: #A739C0;
     pointer-events: none;
+    padding-left: 15px;
 }
 .nome{
     font-style: none;
