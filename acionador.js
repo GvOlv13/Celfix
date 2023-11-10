@@ -121,6 +121,24 @@ carouselInner3.style.transform = `translateX(${translateX}%)`;
 }
 });
 
+const carouselInner4 = document.getElementById('carousel-inner4')
+const prevButton4 = document.getElementById('prev4');
+const nextButton4 = document.getElementById('next4');
+
+prevButton4.addEventListener('click', () => {
+if (translateX < 0) {
+translateX += 100;
+carouselInner4.style.transform = `translateX(${translateX}%)`;
+}
+});
+
+nextButton4.addEventListener('click', () => {
+if (translateX > -200) {
+translateX -= 100;
+carouselInner4.style.transform = `translateX(${translateX}%)`;
+}
+});
+
 
 document.addEventListener("DOMContentLoaded", function() {
   var scrollToTopButton = document.getElementById("scrollToTopButton");
@@ -132,4 +150,45 @@ document.addEventListener("DOMContentLoaded", function() {
           behavior: "smooth" // Role suavemente em vez de um salto instantâneo
       });
   });
+});
+
+// Seleciona todos os elementos com a classe "item"
+const items = document.querySelectorAll(".item");
+
+// Adiciona um ouvinte de evento de clique a cada item
+items.forEach((item) => {
+  item.addEventListener("click", () => {
+    // Remove a classe "active" de todos os itens
+    items.forEach((i) => {
+      i.classList.remove("active");
+    });
+
+    // Adiciona a classe "active" apenas ao item clicado
+    item.classList.add("active");
+  });
+});
+
+
+const menus2 = document.querySelector(".filtrobtn");
+const nav2 = document.querySelector(".filtro");
+
+menus2.addEventListener("click", () => nav2.classList.toggle("active"));
+
+const menuPerfil2 = document.querySelector(".filtrobtn");
+const perfilImg2 = document.querySelector(".filtrobtn img");
+
+let isPerson2 = true; // Variável para controlar o estado da imagem
+
+menuPerfil2.addEventListener("click", () => {
+  // Inverta o estado da variável
+  isPerson2 = !isPerson2;
+
+  // Atualize a imagem com a transição
+  perfilImg2.style.opacity = 0;
+  setTimeout(() => {
+    perfilImg2.src = isPerson2
+      ? "Imagens/filtro.svg"
+      : "Imagens/close.svg";
+    perfilImg2.style.opacity = 1;
+  }, 200); // Tempo de transição em milissegundos
 });
